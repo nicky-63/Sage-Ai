@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { MOODS } from '../constants';
 
@@ -17,7 +16,7 @@ const MoodTracker: React.FC<MoodTrackerProps> = ({ addMood }) => {
 
   return (
     <div className="text-center animate-fade-in">
-      <h2 className="text-2xl font-bold text-brand-light-green mb-2">How are you feeling right now?</h2>
+      <h2 className="text-2xl font-bold text-brand-text mb-2">How are you feeling right now?</h2>
       <p className="text-brand-text-secondary mb-8">Select a mood to log it.</p>
       
       <div className="grid grid-cols-3 gap-4 max-w-sm mx-auto">
@@ -25,7 +24,7 @@ const MoodTracker: React.FC<MoodTrackerProps> = ({ addMood }) => {
           <button
             key={name}
             onClick={() => handleMoodSelect(name)}
-            className="bg-brand-secondary p-4 rounded-lg shadow-lg hover:scale-105 hover:bg-slate-700 transition-transform duration-200 focus:outline-none focus:ring-2 focus:ring-brand-green"
+            className="bg-brand-secondary p-4 rounded-lg shadow-lg hover:scale-105 hover:bg-brand-secondary/80 transition-transform duration-200 focus:outline-none focus:ring-2 focus:ring-brand-accent"
           >
             <div className="text-5xl">{emoji}</div>
             <div className="mt-2 text-brand-text">{name}</div>
@@ -34,7 +33,7 @@ const MoodTracker: React.FC<MoodTrackerProps> = ({ addMood }) => {
       </div>
 
       {selectedMood && (
-        <div className="mt-8 bg-brand-green/20 border border-brand-green text-brand-light-green px-4 py-3 rounded-lg relative animate-fade-in" role="alert">
+        <div className="mt-8 bg-brand-accent/10 border border-brand-accent text-brand-accent px-4 py-3 rounded-lg relative animate-fade-in" role="alert">
           <strong className="font-bold">Logged!</strong>
           <span className="block sm:inline ml-2">Feeling {selectedMood.toLowerCase()} has been recorded.</span>
         </div>

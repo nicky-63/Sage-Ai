@@ -1,4 +1,3 @@
-
 import React, { useState, useCallback } from 'react';
 import Chat from './components/Chat';
 import Journal from './components/Journal';
@@ -14,7 +13,7 @@ const App: React.FC = () => {
   const [moods, setMoods] = useLocalStorage<MoodEntry[]>('moods', []);
   const [journalEntries, setJournalEntries] = useLocalStorage<JournalEntry[]>('journalEntries', []);
   const [chatMessages, setChatMessages] = useLocalStorage<Message[]>('chatMessages', [
-    { id: 'initial', text: "Hello! I'm Aura, your mental wellness companion. How are you feeling today?", sender: 'ai' }
+    { id: 'initial', text: "Hello! I'm Sage, your friendly wellness companion. How are you feeling today?", sender: 'ai' }
   ]);
 
   const addMood = useCallback((mood: string) => {
@@ -43,11 +42,10 @@ const App: React.FC = () => {
 
   return (
     <div className="bg-brand-dark text-brand-text min-h-screen font-sans flex flex-col">
-      <header className="p-4 bg-brand-secondary/50 backdrop-blur-sm sticky top-0 z-10 text-center">
-        <h1 className="text-2xl font-bold text-brand-green">Aura</h1>
-        <p className="text-sm text-brand-text-secondary">Your Mental Wellness Companion</p>
+      <header className="p-5 bg-brand-secondary/70 backdrop-blur-lg sticky top-0 z-10 text-center border-b border-white/10">
+        <h1 className="text-3xl font-bold text-brand-accent tracking-wider">Sage</h1>
       </header>
-      <main className="flex-grow container mx-auto p-4 pb-24">
+      <main className="flex-grow container mx-auto p-4 sm:p-6 pb-28">
         {renderView()}
       </main>
       <BottomNav activeView={activeView} setActiveView={setActiveView} />

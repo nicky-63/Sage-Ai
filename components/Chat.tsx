@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { Message } from '../types';
 import { sendMessageToAI } from '../services/geminiService';
-import { SendIcon, UserIcon, SparklesIcon } from './icons/ChatIcons';
+import { SendIcon, UserIcon } from './icons/ChatIcons';
+import { SageAvatarIcon } from './icons/SageAvatar';
 
 const ChatBubble: React.FC<{ message: Message; isLastMessage: boolean }> = ({ message, isLastMessage }) => {
     const isUser = message.sender === 'user';
@@ -11,11 +12,11 @@ const ChatBubble: React.FC<{ message: Message; isLastMessage: boolean }> = ({ me
     return (
         <div className={`flex items-start gap-3 my-4 ${isUser ? 'justify-end' : 'justify-start'} ${animationClass}`}>
             {!isUser && (
-                <div className="flex-shrink-0 w-9 h-9 bg-brand-green rounded-full flex items-center justify-center shadow-md">
-                    <SparklesIcon />
+                <div className="flex-shrink-0 w-9 h-9 drop-shadow-md">
+                    <SageAvatarIcon />
                 </div>
             )}
-            <div className={`p-4 rounded-2xl max-w-sm md:max-w-md shadow-lg ${isUser ? 'bg-brand-green text-brand-dark rounded-br-none' : 'bg-brand-secondary text-brand-text rounded-bl-none'}`}>
+            <div className={`p-4 rounded-2xl max-w-sm md:max-w-md shadow-lg ${isUser ? 'bg-brand-accent text-brand-dark rounded-br-none font-semibold' : 'bg-brand-secondary text-brand-text rounded-bl-none'}`}>
                 <p className="text-sm leading-relaxed">{message.text}</p>
             </div>
              {isUser && (
@@ -66,21 +67,21 @@ const Chat: React.FC<ChatProps> = ({ messages, setMessages }) => {
     }, [input, isLoading, setMessages]);
     
     return (
-        <div className="flex flex-col h-full max-h-[calc(100vh-150px)]">
+        <div className="flex flex-col h-full max-h-[calc(100vh-170px)]">
             <div className="flex-grow overflow-y-auto pr-2">
                 {messages.map((msg, index) => (
                     <ChatBubble key={msg.id} message={msg} isLastMessage={index === messages.length - 1} />
                 ))}
                 {isLoading && (
                      <div className="flex items-start gap-3 my-4 justify-start">
-                        <div className="flex-shrink-0 w-8 h-8 bg-brand-green rounded-full flex items-center justify-center">
-                            <SparklesIcon />
+                        <div className="flex-shrink-0 w-8 h-8 drop-shadow-md">
+                            <SageAvatarIcon />
                         </div>
                         <div className="p-3 rounded-2xl bg-brand-secondary rounded-bl-none">
                             <div className="flex items-center justify-center space-x-1">
-                                <div className="w-2 h-2 bg-brand-green rounded-full animate-pulse [animation-delay:-0.3s]"></div>
-                                <div className="w-2 h-2 bg-brand-green rounded-full animate-pulse [animation-delay:-0.15s]"></div>
-                                <div className="w-2 h-2 bg-brand-green rounded-full animate-pulse"></div>
+                                <div className="w-2 h-2 bg-brand-accent rounded-full animate-pulse [animation-delay:-0.3s]"></div>
+                                <div className="w-2 h-2 bg-brand-accent rounded-full animate-pulse [animation-delay:-0.15s]"></div>
+                                <div className="w-2 h-2 bg-brand-accent rounded-full animate-pulse"></div>
                             </div>
                         </div>
                     </div>
@@ -94,13 +95,13 @@ const Chat: React.FC<ChatProps> = ({ messages, setMessages }) => {
                     onChange={(e) => setInput(e.target.value)}
                     onKeyPress={(e) => e.key === 'Enter' && handleSend()}
                     placeholder="Tell me what's on your mind..."
-                    className="flex-grow bg-brand-secondary border border-slate-700 rounded-full py-2 px-4 focus:outline-none focus:ring-2 focus:ring-brand-green text-brand-text"
+                    className="flex-grow bg-brand-secondary border border-brand-text-secondary/20 rounded-full py-2 px-4 focus:outline-none focus:ring-2 focus:ring-brand-accent text-brand-text"
                     disabled={isLoading}
                 />
                 <button
                     onClick={handleSend}
                     disabled={isLoading || input.trim() === ''}
-                    className="bg-brand-green text-brand-dark rounded-full p-3 disabled:bg-slate-600 disabled:cursor-not-allowed transition-colors"
+                    className="bg-brand-accent text-brand-dark rounded-full p-3 disabled:bg-brand-secondary disabled:cursor-not-allowed transition-colors"
                     aria-label="Send message"
                 >
                     <SendIcon />

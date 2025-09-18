@@ -4,19 +4,26 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Aura: Youth Mental Health Guide</title>
+    <title>Sage: Your AI Wellness Companion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         theme: {
           extend: {
             colors: {
-              'brand-dark': '#111827',
-              'brand-secondary': '#1F2937',
-              'brand-green': '#34D399',
-              'brand-light-green': '#A7F3D0',
-              'brand-text': '#E5E7EB',
-              'brand-text-secondary': '#9CA3AF',
+              'brand-dark': '#101820', // Near Black/Charcoal
+              'brand-secondary': '#1D2939', // Dark Grey-Blue
+              'brand-accent': '#32D583', // Vibrant Green
+              'brand-purple-accent': '#9E77ED', // Soft Purple
+              'brand-text': '#F2F4F7', // Off-White
+              'brand-text-secondary': '#98A2B3', // Grey
+              'brand-danger': '#F04438', // Muted Red for SOS
+            },
+            fontFamily: {
+              sans: ['Nunito', 'sans-serif'],
             },
             keyframes: {
               fadeInUp: {
@@ -43,7 +50,7 @@
 }
 </script>
 </head>
-  <body class="bg-brand-dark">
+  <body class="bg-brand-dark font-sans">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>

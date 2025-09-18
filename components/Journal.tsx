@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { JournalEntry } from '../types';
 
@@ -19,23 +18,23 @@ const Journal: React.FC<JournalProps> = ({ addJournalEntry, entries }) => {
 
   return (
     <div className="animate-fade-in">
-      <h2 className="text-2xl font-bold text-brand-light-green mb-4">My Journal</h2>
+      <h2 className="text-2xl font-bold text-brand-text mb-4">My Journal</h2>
       <div className="bg-brand-secondary p-4 rounded-lg shadow-lg mb-6">
         <textarea
           value={newEntry}
           onChange={(e) => setNewEntry(e.target.value)}
           placeholder="What's on your mind today?"
-          className="w-full h-32 bg-brand-dark border border-slate-700 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-brand-green text-brand-text resize-none"
+          className="w-full h-32 bg-brand-dark border border-brand-text-secondary/20 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-brand-accent text-brand-text resize-none"
         />
         <button
           onClick={handleSave}
-          className="mt-3 w-full bg-brand-green text-brand-dark font-bold py-2 px-4 rounded-lg hover:bg-emerald-400 transition-colors"
+          className="mt-3 w-full bg-brand-accent text-brand-dark font-bold py-2 px-4 rounded-lg hover:opacity-90 transition-opacity"
         >
           Save Entry
         </button>
       </div>
 
-      <h3 className="text-xl font-semibold text-brand-light-green mb-3">Past Entries</h3>
+      <h3 className="text-xl font-semibold text-brand-text mb-3">Past Entries</h3>
       <div className="space-y-4">
         {entries.length > 0 ? (
           [...entries].reverse().map((entry, index) => (
